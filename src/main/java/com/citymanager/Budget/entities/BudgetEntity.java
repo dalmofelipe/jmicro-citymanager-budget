@@ -1,11 +1,11 @@
 package com.citymanager.Budget.entities;
 
-import com.citymanager.Budget.enums.Folder;
-import com.citymanager.Budget.enums.Origin;
+import com.citymanager.Budget.enums.FolderEnum;
+import com.citymanager.Budget.enums.OriginEnum;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 @Data
@@ -14,6 +14,7 @@ public class BudgetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "budget_id")
     private Long id;
 
     @Column(name = "total_amount")
@@ -22,11 +23,13 @@ public class BudgetEntity {
     @Column(name = "spent_amount")
     private Float spentAmount;
 
-    @Column(name = "possible_destinations")
-    // patifaria isso aqui
-    private List<Folder> possibleDestinations;
+    @ElementCollection(targetClass = FolderEnum.class)
+    @JoinTable(name = "tb_folders", joinColumns = @JoinColumn(name = "budget_id"))
+    @Column(name = "possible_destinations", nullable = true)
+    @Enumerated(EnumType.STRING)
+    Collection<FolderEnum> possibleDestinations;
 
     @Enumerated(EnumType.STRING)
-    private Origin origin;
+    private OriginEnum origin;
 
 }

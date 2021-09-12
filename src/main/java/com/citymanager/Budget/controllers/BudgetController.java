@@ -3,17 +3,19 @@ package com.citymanager.Budget.controllers;
 import com.citymanager.Budget.dtos.BudgetDTO;
 import com.citymanager.Budget.entities.BudgetEntity;
 import com.citymanager.Budget.services.BudgetService;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/budgets")
-@AllArgsConstructor
 public class BudgetController {
 
     private final BudgetService budgetService;
+
+    public BudgetController(BudgetService budgetService) {
+        this.budgetService = budgetService;
+    }
 
     // Cria um orçamento validando todos os campos não nulos e brancos.
     @PostMapping

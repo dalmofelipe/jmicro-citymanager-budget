@@ -1,8 +1,8 @@
 package com.citymanager.Budget.dtos;
 
 import com.citymanager.Budget.entities.BudgetEntity;
-import com.citymanager.Budget.enums.Folder;
-import com.citymanager.Budget.enums.Origin;
+import com.citymanager.Budget.enums.FolderEnum;
+import com.citymanager.Budget.enums.OriginEnum;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
@@ -13,8 +13,8 @@ public class BudgetDTO {
 
     private Float totalAmount;
     private Float spentAmount;
-    private List<Folder> possibleDestinations;
-    private Origin origin;
+    private List<FolderEnum> possibleDestinations;
+    private OriginEnum origin;
 
     public BudgetEntity toEntity() {
         BudgetEntity budgetEntity = new BudgetEntity();

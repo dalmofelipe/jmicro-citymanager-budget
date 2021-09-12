@@ -1,14 +1,15 @@
 package com.citymanager.Budget.enums;
 
-public enum Origin {
+public enum FolderEnum {
 
-    FEDERAL("FEDERAL"),
-    STATE("STATE"),
-    COUNTY("COUNTY");
+    HEALTH("HEALTH"),
+    EDUCATION("EDUCATION"),
+    SPORTS("SPORTS"),
+    INFRASTRUCTURE("INFRASTRUCTURE");
 
     private final String value;
 
-    private Origin(String value) {
+    private FolderEnum(String value) {
         this.value = value;
     }
 
