@@ -2,9 +2,11 @@ package com.citymanager.Budget.controllers;
 
 import com.citymanager.Budget.dtos.BudgetDTO;
 import com.citymanager.Budget.entities.BudgetEntity;
+import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.services.BudgetService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,14 +21,20 @@ public class BudgetController {
 
     // Cria um orçamento validando todos os campos não nulos e brancos.
     @PostMapping
-    public BudgetEntity create(@RequestBody BudgetDTO budgetDTO) {
+    public BudgetEntity create(@Valid @RequestBody BudgetDTO budgetDTO) {
         return budgetService.create(budgetDTO);
     }
 
     // Lista todos os recursos disponíveis. É possível filtrar por possibleDestinations;
+    // /budgets?destinations=SPORTS,EDUCATION
     @GetMapping
-    public List<BudgetEntity> listBudgets() {
-        return budgetService.listBudgets();
+    public List<BudgetEntity> listBudgets(@RequestParam(value = "destinations", required = false) List<FolderEnum> destinations) {
+
+        if(destinations == null) {
+            return budgetService.listBudgets();
+        }
+
+        return budgetService.listBudgets(destinations);
     }
 
     // Registra um uso daquele orçamento (acrescenta no spentAmount caso seja menor do que a diferença (total - spent).

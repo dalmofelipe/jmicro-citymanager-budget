@@ -4,7 +4,7 @@ public enum OriginEnum {
 
     FEDERAL("FEDERAL"),
     STATE("STATE"),
-    COUNTY("COUNTY");
+    COUNTRY("COUNTRY");
 
     private final String value;
 
