@@ -1,6 +1,7 @@
 package com.citymanager.Budget.controllers;
 
 import com.citymanager.Budget.dtos.BudgetDTO;
+import com.citymanager.Budget.dtos.ExpeseDTO;
 import com.citymanager.Budget.entities.BudgetEntity;
 import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.services.BudgetService;
@@ -38,9 +39,9 @@ public class BudgetController {
     }
 
     // Registra um uso daquele orçamento (acrescenta no spentAmount caso seja menor do que a diferença (total - spent).
-    @PatchMapping("/budgets/{id}/expense")
-    public void registerExpense(@RequestParam Long id) {
-        budgetService.registerExpense(id);
+    @PatchMapping("/{id}/expense")
+    public void registerExpense(@Valid @RequestBody ExpeseDTO expeseDTO, @PathVariable Long id) {
+        budgetService.registerExpense(id, expeseDTO);
     }
 
 }
