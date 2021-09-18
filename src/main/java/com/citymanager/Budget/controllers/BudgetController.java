@@ -5,11 +5,13 @@ import com.citymanager.Budget.dtos.ExpeseDTO;
 import com.citymanager.Budget.entities.BudgetEntity;
 import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.services.BudgetService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@Api(value = "Budgets")
 @RestController
 @RequestMapping("/budgets")
 public class BudgetController {
