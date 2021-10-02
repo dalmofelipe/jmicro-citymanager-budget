@@ -51,4 +51,13 @@ public class BudgetService {
 
         budgetRepository.save(budget);
     }
+
+	public BudgetEntity getBudget(Long id) {
+		
+		Optional<BudgetEntity> budgetOpt = budgetRepository.findById(id);
+
+        if(budgetOpt.isEmpty()) return null;
+        
+        return budgetOpt.get();
+	}
 }

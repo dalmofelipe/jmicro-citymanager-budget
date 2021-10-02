@@ -1,0 +1,121 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CITY MANAGER",
+		"_postman_id": "b8062a66-b3d0-9e19-9e53-7c6b5e3cd975",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE Budget",
+			"request": {
+				"url": "localhost:8080/budgets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjo3OGI2NzNhYy1jN2M5LTRmOGEtYjUzNy0xYTkxOGE3Y2JjM2Y=",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"totalAmount\": 500,\r\n\t\"spentAmount\": 1000,\r\n\t\"possibleDestinations\": [\r\n\t\t\"SPORTS\",\r\n\t\t\"INFRASTRUCTURE\"\r\n\t],\r\n\t\"origin\": \"STATE\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LISTAR ALL BudgetS",
+			"request": {
+				"url": "localhost:8080/budgets",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"totalAmount\": 10000,\r\n\t\"spentAmount\": 1000,\r\n\t\"possibleDestinations\": [\r\n\t\t\"CINEMA EM CASA\"\r\n\t],\r\n\t\"origin\": \"FEDERAL\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LISTAR ALL BudgetS WITH FILTERS",
+			"request": {
+				"url": {
+					"raw": "localhost:8080/budgets?destinations=INFRASTRUCTURE",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"budgets"
+					],
+					"query": [
+						{
+							"key": "destinations",
+							"value": "INFRASTRUCTURE",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"totalAmount\": 10000,\r\n\t\"spentAmount\": 1000,\r\n\t\"possibleDestinations\": [\r\n\t\t\"CINEMA EM CASA\"\r\n\t],\r\n\t\"origin\": \"FEDERAL\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "EXPENSE update",
+			"request": {
+				"url": "localhost:8080/budgets/1/expense",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjo3OGI2NzNhYy1jN2M5LTRmOGEtYjUzNy0xYTkxOGE3Y2JjM2Y=",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"expense\": 1000\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

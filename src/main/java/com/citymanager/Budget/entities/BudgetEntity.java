@@ -2,6 +2,7 @@ package com.citymanager.Budget.entities;
 
 import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.enums.OriginEnum;
+
 import lombok.Data;
 
 import javax.persistence.*;

@@ -27,6 +27,11 @@ public class BudgetController {
     public BudgetEntity create(@Valid @RequestBody BudgetDTO budgetDTO) {
         return budgetService.create(budgetDTO);
     }
+    
+    @GetMapping("/{id}")
+    public BudgetEntity getBudget(@PathVariable Long id) {
+    	return budgetService.getBudget(id);
+    }
 
     // Lista todos os recursos disponíveis. É possível filtrar por possibleDestinations;
     // /budgets?destinations=SPORTS,EDUCATION
