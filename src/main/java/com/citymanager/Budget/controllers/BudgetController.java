@@ -6,6 +6,7 @@ import com.citymanager.Budget.entities.BudgetEntity;
 import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.services.BudgetService;
 import io.swagger.annotations.Api;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,8 +25,13 @@ public class BudgetController {
 
     // Cria um orçamento validando todos os campos não nulos e brancos.
     @PostMapping
-    public BudgetEntity create(@Valid @RequestBody BudgetDTO budgetDTO) {
+    public BudgetEntity create(@Validated @RequestBody BudgetDTO budgetDTO) {
         return budgetService.create(budgetDTO);
+    }
+    
+    @GetMapping("/{id}")
+    public BudgetEntity getBudget(@PathVariable Long id) {
+    	return budgetService.getBudget(id);
     }
 
     // Lista todos os recursos disponíveis. É possível filtrar por possibleDestinations;
