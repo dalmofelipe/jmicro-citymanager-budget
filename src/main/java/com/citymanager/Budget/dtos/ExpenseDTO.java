@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExpeseDTO {
+public class ExpenseDTO {
 
     @NotNull
     @Min(value = 1, message = "Valor deve ser positivo maior que zero!")

@@ -1,7 +1,7 @@
 package com.citymanager.Budget.services;
 
 import com.citymanager.Budget.dtos.BudgetDTO;
-import com.citymanager.Budget.dtos.ExpeseDTO;
+import com.citymanager.Budget.dtos.ExpenseDTO;
 import com.citymanager.Budget.entities.BudgetEntity;
 import com.citymanager.Budget.enums.FolderEnum;
 import com.citymanager.Budget.exceptions.business.BudgetNotAvaliableException;
@@ -43,13 +43,13 @@ public class BudgetService {
         return budgetRepository.findByPossibleDestinationsIn(destinations);
     }
 
-    public void registerExpense(Long id, ExpeseDTO expeseDTO) {
+    public void registerExpense(Long id, ExpenseDTO expenseDTO) {
 
         BudgetEntity budget = getBudget(id);
 
         Float total = budget.getTotalAmount();
         Float spent = budget.getSpentAmount();
-        Float expense = expeseDTO.getExpense();
+        Float expense = expenseDTO.getExpense();
         Float budgetAvaliable = total - spent;
 
         if(expense > budgetAvaliable) throw new BudgetNotAvaliableException(budgetAvaliable);
